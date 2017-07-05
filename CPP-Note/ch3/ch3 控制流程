@@ -1,0 +1,70 @@
+控制流程:
+
+這部分在java已有多次練習
+僅部分筆記，以範例為主
+
+if範例: getGrade.cpp
+須注意if與else是就最近的一組來配對，所以為避免錯誤
+建議盡量使用括號。
+
+
+switch條件判斷式，只能比較數值會字元
+架構如下:
+switch (變數名稱或運算式) { 
+    case 符合數字或字元: 
+        陳述句一; 
+        break; 
+    case 符合數字或字元: 
+        陳述句二; 
+        break; 
+    default: 
+        陳述三; 
+}
+
+switch範例: getGrade2.cpp
+須注意，case後面是冒號，另外若是比對字元
+則要用單引號，例如: case 'a':
+
+如果比對的是一個數值範圍，在gcc的C++編譯器中還允許這樣的比對方式：
+switch(i) { 
+    case 1 ... 30: 
+        // statements 
+    case 31 ... 1000: 
+        // statements 
+    default: 
+        // statements 
+}
+
+
+for迴圈
+基本語法如下： 
+for (初始變 數; 判斷式; 遞增式) { 
+    陳述句一; 
+    陳述句二; 
+}
+
+範例: cal99.cpp
+
+
+while迴圈，範例: odd.cpp
+須注意，while其後是以分號做結尾，要記得
+範例: odd.cpp
+
+
+continue的作用與break類似，主要使用於迴圈
+所不同的是break會結束區塊的執行，而continue只會結束接下來區塊中的陳述句
+並跳回迴圈區塊的開頭繼續下一個迴圈，而不是離開迴圈
+範例: breakANDcontinue.cpp
+
+
+goto可以在程式中任意跳躍，跳躍前必須先設定好目的地，跳躍時必須指定目的地
+例如： 
+start: 
+.... 
+.... 
+goto start;
+
+start就是goto目的地的一個標籤（Label），後面使用冒號，標籤可以出現在程式的任一個地方。 
+此處跟java有所不同，java的標籤只能標註在迴圈之前。
+範例: gotoExample.cpp
+最好先忘了goto的存在，多培養結構化程式設計的思考，以免程式的邏輯馬上會讓您變得混亂不堪

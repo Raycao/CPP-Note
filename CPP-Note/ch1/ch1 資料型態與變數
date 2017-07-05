@@ -1,0 +1,95 @@
+初始練習
+
+#include <iostream> 
+using namespace std; 
+
+int main() { 
+ cout << "Hello! World!\n"; 
+ cout << "哈囉! C++!\n";
+
+ return 0; 
+}
+
+範例: FirstTry.cpp
+
+#include是巨集（Macro）前置處理器指令（Preprocessor directive）
+它告訴編譯器（Compiler）這個程式必須使用到 iostream 
+這個表頭檔（Header file）中的一些函式（Function）與類別（Class）定義
+以正確的編譯程式中所使用到的程式庫函式
+using指令表示使用名稱空間（Namespace）std下的名稱
+
+在C++程式中，程式的進入點（Entry point）是main()這個函式
+在標準C++中，如果沒有指定return，main()也會傳回0
+
+C++程式中，每一個陳述（Statement）結束都必須使用分號（;）
+cout（發音see-out）是C++所開啟的輸出串流(Stream)物件（iostream object）
+而<<是輸出運算子（Operator）
+
+
+資料型態:
+主要區分為「整數」（Integer）、「浮點數」（Float）、「字元」（Character）
+我們可以透過sizeof()來計算所占記憶體的大小
+範例: Size.cpp
+
+使用的平台不同，所占記憶體大小也不同
+若所儲存數值超出可容納範圍，則稱為溢值(Overflow)
+會造成不可預期的結果
+另外還有bool型別，表示布林變數，佔一個位元組
+範例: boolean.cpp
+
+
+
+
+字面常量:
+
+在程式中寫下1、1.0、3.14159這樣的數值，這類數值稱之為「字面常量」（Literal constant）
+1這個數值的話，預設它會是個int型態無正負號的數值，而如果您在程式中寫下1.0，3.14 等小數時，預設它會是double型態的數值
+範例: literal.cpp
+
+
+整數字面常量可以用8進位、10進位與16進位來表示，一般習慣使用10進位
+如果您要使用8進位的字面常量，開頭加上0就可以了，如果要使用16進位的字面常量，開頭加上0x
+
+整數值之後加上L或l，表示該整數值要是long型態
+也可以指定為無號整數，可使用U或 u來指定，例如1U，L與U可以同時指定，例如1UL或1LU
+浮點數的話，則可以在寫下浮點數值時以F或f表示數值要使用float型態
+
+可以使用endl這個C++內建的I/O控制器（manipulator），它會輸出newline字元，而避免直接使用escape sequence指定newline字元
+例如: cout << "Hello! World!" << endl;
+
+字串字面常數由字元陣列組成，每一個字串最後會以一個null字元結束。
+true與false也是字面常數，對應型態為bool。
+
+
+變數:
+
+不多說
+範例: student.cpp
+也可以在使用宣告變數後，使用以下的建構子（Constructor）方式將變數的值初始為0：
+int ageForStudent = int();
+double scoreForStudent = double();
+char levelForStudent = char();
+
+可以使用const關鍵字來限定變數，第一次的數值指定後便不允許再次指定值
+
+
+終端機輸入輸出:
+
+將訊息輸出至終端機，稱之為「標準輸出」（Stand output）
+C++藉由iostream物件cout（發音see-out）將訊息輸出至終端機
+< <運算子將一個指定的訊息或數值指引至標準輸出物件上
+
+標準輸出可以被重新導向至一個檔案，您可以在執行程式時使用" >>"將輸出結果導向至指定的檔案
+例如（假設編譯後的可執行檔為main）：
+main >> result.txt
+
+使用iostream物件cerr（發音see-err），稱之為「標準錯誤」（Standard error）
+它會將訊息輸出至終端機上，與標準輸出不同的是，cerr會 立即顯示指定的（錯誤）訊息給使用者知道
+即使您指定程式將結果重新導向至檔案，cerr輸出串流的訊息並不會被重新導向，而仍會顯示在指定的顯示裝置上
+
+重新導向 standard output 是用 '>', standard input 則是 "<"
+">>" 除了重導 standard output 後，還有附加的功能，也就是會把輸出附加到被導向的目標檔案後頭
+
+取得使用者的輸入，則可以使用「標準輸入」（Standard input）的iostream物件cin（發音see-in），並使用>>運算子將輸入的訊息指定給變數
+範例: IN_OUT.cpp
+

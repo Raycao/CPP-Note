@@ -1,0 +1,139 @@
+字元:
+
+字元陣列（C-style 字串）:
+
+C++中字串的本質是由字元所組成的陣列
+並在最後加上一個空（null）字元'\0'
+例如下面這個程式就是一個"hello"字串的宣告：
+char str[] = {'h', 'e', 'l', 'l', 'o', '\0'};
+
+
+之後您可以直接使用str來代表該字串，例如在文字模式下輸出str字串：
+cout << str << endl;
+
+在C++中您也可以這麼宣告字串：
+char str[] = "hello";
+及便沒有自己表示，程式依然會主動在後面家上空字元'\0'
+基本上它依然屬於字元陣列。
+範例: charEX.cpp
+
+執行範例會發現最後多output出null這個值
+這是因為範例中，雖然str[]只有五個字元
+但是最後會加上一個空字元'\0'，所以str[]共用了6個字元
+
+你可以透過下面的方法來判斷字串是否為空
+例: 
+if(str[0] == '\0') {
+    cout << "字串為空";
+}
+
+而空字串再條件判斷中視為0，也就是false
+所以你也可以如下判斷:
+if( ! str[0] ) {
+    cout << "字串為空";
+}
+
+字串一但指定，它的長度就固定了，也就是字元陣列的長度
+所以您由使用者輸入取得字串值時，需注意不要超過字串的長度
+例:
+char str[80]; 
+cout << "輸入字串："; 
+cin >> str; 
+cout << "您輸入的字串為 " << str << endl;
+此例子很明顯看出不得超出80個字元上限
+
+
+然而指定給字串陣列新的內容，不得如下方式作業:
+char str[80]; 
+str = "Just";
+
+
+你必須一個一個字元指定至陣列中，並加上空白字元，例如下:
+char str[80] = {'\0'}; 
+str[0] = 'J'; 
+str[1] = 'u'; 
+str[2] = 's'; 
+str[3] = 't'; 
+str[4] = '\0'; 
+cout << str << endl;
+
+
+此種指定方式不方便，所以C++提供了字串處理的相關函式，例如：
+strcpy(str1, str2);  // str2字串複製給str1字串 
+strcat(str1, str2);  // str2字串串接在str1字串後 
+strlen(str);  // 計算不含空字元的字串長度 
+strcmp(str1, str2); // 比較兩個字串
+相同回傳0，str1大於str2回傳大於0的值，小於傳回小於0的值
+是依字典順序比對，例如若str1大於str2，表示str1在字典中的順序是在str2之後
+
+但要使用這些字串處理函式，必須先include進cstring或string
+例: #include <cstring>
+有關於字串處理函式的範例: Cstring.cpp
+
+
+當你使用cin來取得使用者輸入時，你會發現輸入中間不能空白
+如果你想接受有空白的使用者輸入，你可以使用gets()來代替，例如下:
+char str[80]; 
+cout << "輸入字串："; 
+gets(str); 
+cout << "輸入的字串：" << str << endl;
+
+須注意!!! 
+gets()函式並不會檢查使用者的輸入是否超出字元陣列的長度
+
+
+
+使用 string 型態:
+
+操作字元陣列來進行字串操作是較低階的行為
+陣列本身對自己的長度沒有意識，所以無法判斷自己是否為空字串
+而陣列也不能直接指定給另一個陣列，所以您無法直接將字串指定給另一個字串
+您也無法對兩個字串直接進行串連的動作，例:
+char str1[] = "text1";
+char str2[] = "text2";
+str1 = str2; // error
+cout << str1 + str2 << endl; // error
+
+C++標準函式庫提供了string類別，您可以使用這個類別來建立實例
+並進行各項高階的字串抽象行為，像是字串的指定、串接等
+要使用字串類別，需先include string標頭檔
+#include <string>
+
+
+可以明白這邊跟java是不太一樣的，string並非c++型態之一
+可以使用三種方式來建立一個string類別的物件（object），例如：
+string str1;  // 建立一個string物件，內容為空字串
+string str2("caterpillar");  // 以字串常量建立字串
+範例: stringEX.cpp
+string str3(str2); // 以string實例建立字串
+範例: stingEX.cpp
+
+
+在剛剛字元陣列不能使用的=指定方式
+字串類別下就可以使用了，例:
+string str1("text1");
+string str2("text2");
+....
+str1 = str2;
+
+
+你也可以將字元陣列指定給字串，例:
+char str[] = "justin";
+string name("caterpillar");
+str = name; // error
+
+
+但你不可以將字串指定給字元陣列，例:
+char str[] = "justin";
+string name("caterpillar");
+str = name; // error
+
+
+可以直接使用+運算子來串接字串，例如：
+str1 = str1 + str2;
+str1 = str1 + "\n";
+
+字串物件可以用下標運算子[]來指定索引，存取相對應位置的字元
+範例: stringChar.cpp
+
+另外String物件有幾個方法也可以使用，範例: stringMethod.cpp
