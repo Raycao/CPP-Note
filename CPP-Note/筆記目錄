@@ -2,8 +2,11 @@
 參照網路上相關資料，並做學習用途，並無營利
 參考範例: https://openhome.cc/Gossip/CppGossip/index.html
 
-ch1
-ch2 
-ch3
-ch4
-ch5
+ch1 資料型態與變數
+ch2 運算
+ch3 流程控制
+ch4 陣列（Array）
+ch5 向量（Vector）
+ch6 字串（String）
+ch7 指標（Pointer）
+
